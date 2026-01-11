@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1768140307716,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1768140648589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -158,4 +158,37 @@\n   text-align: center;\n   padding: 30px;\n   color: #777;\n }\n+/* CTA AREA */\n+.cta-area {\n+  margin-top: 20px;\n+}\n+\n+.download-buttons {\n+  display: flex;\n+  gap: 15px;\n+  margin-top: 10px;\n+}\n+\n+.store-btn {\n+  padding: 14px 24px;\n+  border-radius: 30px;\n+  text-decoration: none;\n+  font-weight: 600;\n+  color: white;\n+  background: #2f6fed;\n+}\n+\n+.store-btn.android {\n+  background: #1db954;\n+}\n+\n+.hidden {\n+  display: none;\n+}\n+\n+.launch-note {\n+  margin-top: 10px;\n+  font-size: 14px;\n+  opacity: 0.8;\n+}\n"
                 }
             ],
             "date": 1768140307716,
