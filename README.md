@@ -1,2 +1,3 @@
 # Praxis Study App
-study anything anywhere and learn it better
+Where practice meets progress. 
+Guided by intelligence.
