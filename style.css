@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #102542;
+}
+
+/* TOP HERO */
+.top-hero {
+  height: 320px;
+  background: linear-gradient(135deg, #0e2a47, #1b3f6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  text-align: center;
+  color: white;
+}
+
+.app-icon {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 56px;
+}
+
+.hero-overlay p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* INTRO */
+.intro {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 48px;
+}
+
+.intro p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.intro-visuals {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+
+.phone {
+  width: 280px;
+}
+
+.objects img {
+  width: 180px;
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* NAV STRIP */
+.nav-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  border-top: 1px solid #eee;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo img {
+  width: 36px;
+}
+
+.nav-links a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: #102542;
+}
+
+.primary-btn {
+  background: #2f6fed;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* BOTTOM HERO */
+.bottom-hero {
+  background: linear-gradient(135deg, #0e2a47, #1b3f6b);
+  color: white;
+  padding: 80px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-content {
+  max-width: 420px;
+}
+
+.bottom-content h2 {
+  font-size: 42px;
+}
+
+.bottom-content p {
+  margin: 20px 0;
+  opacity: 0.9;
+}
+
+.bottom-content form {
+  display: flex;
+  gap: 10px;
+}
+
+.bottom-content input {
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  flex: 1;
+}
+
+.bottom-content button {
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #2f6fed;
+  color: white;
+}
+
+.bottom-image img {
+  width: 420px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}

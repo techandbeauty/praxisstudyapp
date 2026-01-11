@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1768140340083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1768140340083,
+            "name": "Commit-0",
+            "content": "document.getElementById(\"waitlist-form\")\n  .addEventListener(\"submit\", function (e) {\n    e.preventDefault();\n\n    const email = e.target.querySelector(\"input\").value;\n\n    if (!email) return;\n\n    console.log(\"Waitlist signup:\", email);\n\n    alert(\"You're on the waitlist! 🚀\");\n    e.target.reset();\n\n    // 🔥 Firebase Firestore will go here\n  });\n"
+        }
+    ]
+}
