@@ -1,83 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Praxis AI – Guided by Intelligence</title>
-
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis - Study Like You Scroll Instagram</title>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #fafafa;
+            color: #262626;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            max-width: 975px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #5C9FE5, #52C41A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header-buttons button {
+            padding: 8px 16px;
+            margin-left: 8px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-login {
+            background: transparent;
+            color: #5C9FE5;
+        }
+        
+        .btn-signup {
+            background: #5C9FE5;
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background: #4a8ad4;
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 975px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-text .tagline {
+            font-size: 24px;
+            color: #737373;
+            margin-bottom: 30px;
+        }
+        
+        .hero-text p {
+            font-size: 18px;
+            color: #737373;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        .hero-buttons button {
+            padding: 14px 32px;
+            margin-right: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #5C9FE5;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #4a8ad4;
+        }
+        
+        .btn-secondary {
+            background: white;
+            border: 2px solid #dbdbdb;
+            color: #262626;
+        }
+        
+        .btn-secondary:hover {
+            border-color: #5C9FE5;
+        }
+        
+        /* Phone Mockup */
+        .phone-mockup {
+            background: linear-gradient(135deg, #5C9FE5, #52C41A);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .phone-screen {
+            background: white;
+            border-radius: 30px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .phone-screen h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        
+        .feature-card strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #5C9FE5;
+        }
+        
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 80px 20px;
+            margin-top: 60px;
+        }
+        
+        .features-content {
+            max-width: 975px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .feature p {
+            color: #737373;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #5C9FE5, #52C41A);
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .stats-content {
+            max-width: 975px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            color: #737373;
+            margin-bottom: 40px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dbdbdb;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #5C9FE5;
+        }
+        
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background: #5C9FE5;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        
+        .modal-btn:hover {
+            background: #4a8ad4;
+        }
+        
+        .switch-mode {
+            text-align: center;
+            margin-top: 20px;
+            color: #737373;
+        }
+        
+        .switch-mode a {
+            color: #5C9FE5;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .error {
+            color: #ed4956;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #fafafa;
+            padding: 40px 20px;
+            text-align: center;
+            color: #737373;
+            border-top: 1px solid #dbdbdb;
+        }
+        
+        .social-links a {
+            margin: 0 12px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .phone-mockup {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Praxis</div>
+            <div class="header-buttons">
+                <button class="btn-login" onclick="openModal('login')">Log In</button>
+                <button class="btn-signup" onclick="openModal('signup')">Sign Up</button>
+            </div>
+        </div>
+    </header>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Praxis AI" />
-      <span>Praxis <strong>AI</strong></span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Study like you scroll Instagram</h1>
+            <p class="tagline">The social study app that actually keeps you engaged</p>
+            <p>Flashcard feed, AI coaching, study groups, and mock interviews. Built for students who struggle with traditional learning.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="openModal('signup')">Get Started Free</button>
+                <button class="btn-secondary" onclick="document.querySelector('.features').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+            </div>
+        </div>
+        
+        <div class="phone-mockup">
+            <div class="phone-screen">
+                <h3>📱 Praxis Feed</h3>
+                <div class="feature-card">
+                    <strong>📚 Scroll to Study</strong>
+                    Flashcards in your feed like Instagram posts
+                </div>
+                <div class="feature-card">
+                    <strong>🤖 AI Coach</strong>
+                    Chat with Praxis AI anytime
+                </div>
+                <div class="feature-card">
+                    <strong>🔥 Daily Streaks</strong>
+                    Build consistent study habits
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-content">
+            <h2>Everything you need to ace your exam</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📚</div>
+                    <h3>Social Feed</h3>
+                    <p>Scroll through flashcards like Instagram. Follow friends and study together.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Study Coach</h3>
+                    <p>Get instant help from Praxis AI. Powered by Claude for accurate, helpful responses.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Study Groups</h3>
+                    <p>DM friends, create study groups, and learn together in real-time.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎥</div>
+                    <h3>Mock Interviews</h3>
+                    <p>Practice with AI avatar coaches. Get realistic interview experience.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Highlights</h3>
+                    <p>Organize notes by subject. Access them anytime like Instagram highlights.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>See your improvement. Track streaks, accuracy, and study time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-content">
+            <div>
+                <div class="stat-number">87%</div>
+                <div class="stat-label">Daily Retention</div>
+            </div>
+            <div>
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">User Rating</div>
+            </div>
+            <div>
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Students Learning</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to transform your studying?</h2>
+        <p>Join thousands of students who study smarter, not harder</p>
+        <button class="btn-primary" style="padding: 16px 40px; font-size: 18px;" onclick="openModal('signup')">
+            Sign Up Free
+        </button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/praxisstudyapp">📸</a>
+            <a href="https://linkedin.com/company/praxisstudyapp">💼</a>
+        </div>
+        <p style="margin-top: 20px;">📧 hello@praxisapp.com</p>
+        <p style="margin-top: 12px; font-size: 14px;">© 2026 Praxis. Built by Nexus Tech Digital Solutions.</p>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Sign Up</h2>
+            <div id="successMessage" style="display: none;" class="success"></div>
+            <div id="errorMessage" style="display: none;" class="error"></div>
+            
+            <form id="authForm">
+                <div class="form-group" id="nameGroup">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                </div>
+                <div class="form-group" id="usernameGroup">
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" minlength="6" required>
+                </div>
+                <button type="submit" class="modal-btn" id="submitBtn">Sign Up</button>
+            </form>
+            
+            <div class="switch-mode">
+                <span id="switchText">Already have an account? </span>
+                <a id="switchLink" onclick="toggleMode()">Log In</a>
+            </div>
+            
+            <div class="switch-mode" style="margin-top: 12px;">
+                <a onclick="closeModal()">Cancel</a>
+            </div>
+        </div>
     </div>
 
-    <nav>
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-      <button class="btn-primary">Get Started</button>
-    </nav>
-  </header>
+    <script>
+        // TODO: Replace with YOUR Firebase config from Firebase Console
+        const firebaseConfig = {
+            apiKey: "YOUR-API-KEY",
+            authDomain: "YOUR-PROJECT.firebaseapp.com",
+            projectId: "YOUR-PROJECT-ID",
+            storageBucket: "YOUR-PROJECT.appspot.com",
+            messagingSenderId: "YOUR-SENDER-ID",
+            appId: "YOUR-APP-ID"
+        };
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Praxis <span>AI</span></h1>
-      <p class="tagline">Guided by intelligence.</p>
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-      <p class="subtext">
-        Where practice meets progress. Sharpen your mind and build powerful study habits.
-      </p>
+        let isSignUp = true;
 
-      <form id="waitlist-form">
-        <input type="email" id="email" placeholder="Enter your email" required />
-        <button type="submit">Join the Waitlist</button>
-      </form>
+        function openModal(mode) {
+            isSignUp = mode === 'signup';
+            updateModalUI();
+            document.getElementById('authModal').classList.add('active');
+            document.getElementById('authForm').reset();
+            hideMessages();
+        }
 
-      <p class="launch-note">Launching Thursday 🚀</p>
-    </div>
+        function closeModal() {
+            document.getElementById('authModal').classList.remove('active');
+        }
 
-    <div class="hero-image">
-      <img src="assets/phone-mockup.png" alt="Praxis App Preview" />
-    </div>
-  </section>
+        function toggleMode() {
+            isSignUp = !isSignUp;
+            updateModalUI();
+            hideMessages();
+        }
 
-  <!-- FEATURES -->
-  <section id="features" class="features">
-    <div class="feature-card">
-      <h3>Focused Study Sessions</h3>
-      <p>AI-guided focus timers designed to maximize retention.</p>
-    </div>
+        function updateModalUI() {
+            document.getElementById('modalTitle').textContent = isSignUp ? 'Sign Up' : 'Log In';
+            document.getElementById('submitBtn').textContent = isSignUp ? 'Sign Up' : 'Log In';
+            document.getElementById('switchText').textContent = isSignUp ? 'Already have an account? ' : "Don't have an account? ";
+            document.getElementById('switchLink').textContent = isSignUp ? 'Log In' : 'Sign Up';
+            document.getElementById('nameGroup').style.display = isSignUp ? 'block' : 'none';
+            document.getElementById('usernameGroup').style.display = isSignUp ? 'block' : 'none';
+        }
 
-    <div class="feature-card">
-      <h3>Review & Quiz</h3>
-      <p>Turn notes into quizzes instantly to reinforce learning.</p>
-    </div>
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
 
-    <div class="feature-card">
-      <h3>Cross-Platform</h3>
-      <p>Available on iOS, Android, and Web.</p>
-    </div>
-  </section>
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            successEl.textContent = message;
+            successEl.style.display = 'block';
+        }
 
-  <!-- DOWNLOAD (HIDDEN UNTIL LAUNCH) -->
-  <section id="download" class="download hidden">
-    <h2>Download Praxis AI</h2>
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
 
-    <div class="download-buttons">
-      <button class="btn-secondary">Download iOS</button>
-      <button class="btn-secondary">Download Android</button>
-    </div>
-  </section>
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
 
-  <footer>
-    <p>© 2026 Praxis AI. All rights reserved.</p>
-  </footer>
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-  <script src="app.js"></script>
+            try {
+                if (isSignUp) {
+                    const fullName = document.getElementById('fullName').value;
+                    const username = document.getElementById('username').value;
+
+                    // Create user
+                    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                    const userId = userCredential.user.uid;
+
+                    // Create user profile in Firestore
+                    await db.collection('users').doc(userId).set({
+                        userId: userId,
+                        email: email,
+                        fullName: fullName,
+                        username: username,
+                        bio: '',
+                        profileImageURL: '',
+                        followers: 1,
+                        following: 1,
+                        posts: 0,
+                        school: '',
+                        jobTitle: '',
+                        phone: '',
+                        socialLinks: {},
+                        highlights: [],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    // Auto-follow Praxis AI
+                    await db.collection('users').doc(userId).collection('following').doc('praxis-ai-account').set({
+                        followedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    await db.collection('users').doc('praxis-ai-account').collection('followers').doc(userId).set({
+                        followedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+
+                    showSuccess('Account created! Download the Praxis app to start studying.');
+                } else {
+                    // Sign in
+                    await auth.signInWithEmailAndPassword(email, password);
+                    showSuccess('Logged in! Download the Praxis app to continue.');
+                }
+
+                document.getElementById('authForm').reset();
+                
+                setTimeout(() => {
+                    closeModal();
+                }, 2000);
+
+            } catch (error) {
+                showError(error.message);
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('authModal').addEventListener('click', (e) => {
+            if (e.target.id === 'authModal') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
