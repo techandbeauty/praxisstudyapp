@@ -3,31 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Praxis – Where Practice Meets Progress</title>
-
+  <title>Praxis AI – Guided by intelligence</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- TOP HERO -->
+<!-- TOP HERO - Icon LEFT, Text RIGHT -->
 <section class="top-hero">
-  <div class="hero-overlay">
-    <img src="assets/logo.png" class="app-icon" />
-    <h1>Praxis</h1>
-    <p>Where practice meets progress.</p>
+  <div class="hero-container">
+    <img src="assets/logo.png" class="hero-icon" alt="Praxis AI" />
+    <div class="hero-text">
+      <h1>Praxis AI</h1>
+      <p>Guided by intelligence.</p>
+    </div>
   </div>
 </section>
 
-<!-- MID SECTION -->
+<!-- MID SECTION - Light Background -->
 <section class="intro">
-  <h2>Praxis</h2>
-  <p>Your personal study session.</p>
-
+  <h2>Praxis AI</h2>
+  <p>Guided by intelligence.</p>
   <div class="intro-visuals">
-    <img src="assets/hero-phone.png" class="phone" />
+    <img src="assets/hero-phone.png" class="phone" alt="Praxis App" />
     <div class="objects">
-      <img src="assets/headphones.png" />
-      <img src="assets/notebook.png" />
+      <img src="assets/headphones.png" alt="Headphones" />
+      <img src="assets/notebook.png" alt="Notebook" />
     </div>
   </div>
 </section>
@@ -35,57 +35,89 @@
 <!-- NAV STRIP -->
 <nav class="nav-strip">
   <div class="nav-logo">
-    <img src="assets/logo.png" />
-    <span>Praxis</span>
+    <img src="assets/logo.png" alt="Praxis AI" />
+    <span>Praxis AI</span>
   </div>
-
   <div class="nav-links">
     <a href="#">Home</a>
     <a href="#">Features</a>
     <a href="#">About</a>
-    <button class="primary-btn">Get Started</button>
+    <button class="primary-btn" onclick="openWaitlist()">Get Started</button>
   </div>
 </nav>
 
-<!-- LOWER HERO -->
+<!-- LOWER HERO - Navy Blue -->
 <section class="bottom-hero">
   <div class="bottom-content">
     <h2>Where practice meets progress.</h2>
-    <p>
-      Sharpen your mind and boost your study habits with Praxis.
-    </p>
-
-    <form id="waitlist-form">
-      <input type="email" placeholder="Enter your email" required />
-      <button type="submit">Start Studying</button>
-    </form>
+    <p>Sharpen your mind and boost your study habits with Praxis AI.</p>
+    <button class="start-btn" onclick="openWaitlist()">Start Studying</button>
   </div>
-
   <div class="bottom-image">
-    <img src="assets/laptop.png" />
+    <img src="assets/laptop.png" alt="Praxis on Laptop" />
   </div>
 </section>
-<div class="cta-area">
 
-  <!-- WAITLIST (pre-launch) -->
-  <form id="waitlist-form" class="waitlist">
-    <input type="email" id="email" placeholder="Enter your email" required />
-    <button type="submit">Notify Me at Launch</button>
-  </form>
-
-  <!-- DOWNLOAD BUTTONS (launch day) -->
-  <div id="download-buttons" class="download-buttons hidden">
-    <a href="#" class="store-btn ios">Download on App Store</a>
-    <a href="#" class="store-btn android">Get it on Google Play</a>
+<!-- WAITLIST MODAL -->
+<div id="waitlist-modal" class="modal">
+  <div class="modal-overlay" onclick="closeWaitlist()"></div>
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeWaitlist()">&times;</span>
+    
+    <h3>Join the Waitlist</h3>
+    <p class="modal-subtitle">Be first to know when Praxis AI launches!</p>
+    
+    <!-- WAITLIST FORM (before launch) -->
+    <form id="waitlist-form" class="waitlist-form">
+      <input 
+        type="email" 
+        id="email" 
+        placeholder="Enter your email" 
+        required 
+      />
+      <button type="submit">Notify Me at Launch</button>
+    </form>
+    
+    <p class="launch-note">🚀 Launching Thursday!</p>
+    
+    <!-- DOWNLOAD BUTTONS (after launch) -->
+    <div id="download-buttons" class="download-buttons hidden">
+      <h3>Download Praxis AI</h3>
+      <div class="store-buttons">
+        <a href="#" class="store-btn ios">
+          <span class="store-icon">📱</span>
+          <div class="store-text">
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </div>
+        </a>
+        <a href="#" class="store-btn android">
+          <span class="store-icon">🤖</span>
+          <div class="store-text">
+            <small>Get it on</small>
+            <strong>Google Play</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+    
+    <!-- SUCCESS MESSAGE -->
+    <div id="success-message" class="success-msg hidden">
+      <p>✅ You're on the list! We'll email you when we launch.</p>
+    </div>
   </div>
-
-  <p class="launch-note">Launching Thursday 🚀</p>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Praxis. All rights reserved.</p>
+  <p>&copy; 2026 Praxis AI. Built by Nexus Tech Digital Solutions.</p>
+  <div class="footer-social">
+    <a href="https://instagram.com/praxisstudyapp">📸 Instagram</a>
+    <a href="https://linkedin.com/company/praxisstudyapp">💼 LinkedIn</a>
+  </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
+
 </body>
 </html>

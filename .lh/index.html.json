@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1768096957054,
@@ -24,6 +24,10 @@
                 {
                     "date": 1768140623686,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,25 @@\n   <div class=\"bottom-image\">\n     <img src=\"assets/laptop.png\" />\n   </div>\n </section>\n+<div class=\"cta-area\">\n \n+  <!-- WAITLIST (pre-launch) -->\n+  <form id=\"waitlist-form\" class=\"waitlist\">\n+    <input type=\"email\" id=\"email\" placeholder=\"Enter your email\" required />\n+    <button type=\"submit\">Notify Me at Launch</button>\n+  </form>\n+\n+  <!-- DOWNLOAD BUTTONS (launch day) -->\n+  <div id=\"download-buttons\" class=\"download-buttons hidden\">\n+    <a href=\"#\" class=\"store-btn ios\">Download on App Store</a>\n+    <a href=\"#\" class=\"store-btn android\">Get it on Google Play</a>\n+  </div>\n+\n+  <p class=\"launch-note\">Launching Thursday 🚀</p>\n+</div>\n+\n <footer>\n   <p>© 2026 Praxis. All rights reserved.</p>\n </footer>\n \n"
+                },
+                {
+                    "date": 1768140744675,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,7 +85,7 @@\n <footer>\n   <p>© 2026 Praxis. All rights reserved.</p>\n </footer>\n \n-<script src=\"js/main.js\"></script>\n+<script type=\"module\" src=\"js/main.js\"></script>\n </body>\n </html>\n"
                 }
             ],
             "date": 1768096957054,
