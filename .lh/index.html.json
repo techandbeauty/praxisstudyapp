@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1768096957054,
@@ -28,6 +28,10 @@
                 {
                     "date": 1768140744675,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,7 +85,7 @@\n <footer>\n   <p>© 2026 Praxis. All rights reserved.</p>\n </footer>\n \n-<script src=\"js/main.js\"></script>\n+<script type=\"module\" src=\"js/main.js\"></script>\n </body>\n </html>\n"
+                },
+                {
+                    "date": 1768141410544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n <head>\n   <meta charset=\"UTF-8\" />\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n   <title>Praxis AI – Guided by intelligence</title>\n-  <link rel=\"stylesheet\" href=\"css/tyle.css\" />\n+  <link rel=\"stylesheet\" href=\"csstyle.css\" />\n </head>\n <body>\n \n <!-- TOP HERO - Icon LEFT, Text RIGHT -->\n"
                 }
             ],
             "date": 1768096957054,
