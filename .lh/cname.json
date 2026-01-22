@@ -1,0 +1,22 @@
+{
+    "sourceFile": "cname",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1769078708795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1769078716301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-sstudyapp.co\n\\ No newline at end of file\n+praxisstudyapp.com\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1769078708795,
+            "name": "Commit-0",
+            "content": "sstudyapp.co"
+        }
+    ]
+}
