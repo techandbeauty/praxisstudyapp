@@ -1,185 +1,333 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Praxis - Study Smarter Together</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis - Study Smarter. Not Harder.</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Meet TARA, your AI study coach. Join thousands of students studying smarter with Praxis.">
+    <meta name="keywords" content="study app, AI tutor, exam prep, flashcards, study groups">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Praxis - Study Smarter. Not Harder.">
+    <meta property="og:description" content="Meet TARA, your AI study coach.">
+    <meta property="og:image" content="tara-promo.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            width: 1080px;
-            height: 1920px; /* 9:16 ratio for Instagram/TikTok */
-            background: linear-gradient(135deg, #1a2a6c, #3b5998, #6dd5ed);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, system-ui, sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-100px) translateX(50px); }
-        }
-        
-        .hero {
             text-align: center;
-            z-index: 10;
+            padding: 80px 20px 60px;
+        }
+        
+        .logo {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+        
+        /* Avatar Section */
+        .avatar-section {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .avatar-container {
             position: relative;
-            margin-bottom: 60px;
-        }
-        
-        .avatar-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 3s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+            width: 320px;
+            height: 320px;
+            margin-bottom: 48px;
         }
         
         .avatar-circle {
-            width: 480px;
-            height: 480px;
-            background: white;
+            width: 320px;
+            height: 320px;
+            background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
         
-        .avatar-ring {
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            border: 6px solid rgba(255,255,255,0.5);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 3s infinite;
-        }
-        
-        video {
+        .avatar-circle video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        h1 {
-            font-size: 120px;
-            font-weight: 900;
-            color: white;
-            margin: 40px 0 20px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            letter-spacing: -2px;
+        .avatar-border {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
         }
         
-        .tagline {
-            font-size: 48px;
-            color: rgba(255,255,255,0.95);
-            font-weight: 500;
-            margin-bottom: 80px;
+        .avatar-intro {
+            text-align: center;
         }
         
+        .avatar-intro h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .avatar-intro p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Features Section */
         .features {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            margin-bottom: 80px;
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .feature {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 25px 50px;
-            border-radius: 60px;
-            font-size: 32px;
-            color: white;
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            font-size: 28px;
+            min-width: 40px;
+        }
+        
+        .feature-content h3 {
+            font-size: 20px;
             font-weight: 600;
-            border: 2px solid rgba(255,255,255,0.3);
+            margin-bottom: 8px;
+        }
+        
+        .feature-content p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px 100px;
+            text-align: center;
+        }
+        
+        .coming-soon {
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
         }
         
         .cta-button {
-            background: white;
-            color: #1a2a6c;
-            padding: 35px 70px;
-            border-radius: 40px;
-            font-size: 36px;
-            font-weight: 700;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            margin-bottom: 30px;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            background: #ffffff;
+            padding: 20px 60px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 24px;
         }
         
-        .stars {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
         
-        .social-proof {
-            color: rgba(255,255,255,0.9);
-            font-size: 28px;
+        .cta-button:active {
+            transform: translateY(0);
+        }
+        
+        .availability {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 48px;
+            }
+            
+            .tagline {
+                font-size: 22px;
+            }
+            
+            .avatar-container {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .avatar-circle {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .cta-button {
+                padding: 18px 40px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particles -->
-    <script>
-        for(let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 20 + 10 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            document.body.appendChild(particle);
-        }
-    </script>
     
-    <div class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="logo">PRAXIS</h1>
+            <p class="tagline">Study Smarter.<br>Not Harder.</p>
+        </div>
+    </section>
+    
+    <!-- Avatar Section -->
+    <section class="avatar-section">
         <div class="avatar-container">
-            <div class="avatar-glow"></div>
-            <div class="avatar-ring"></div>
             <div class="avatar-circle">
                 <video autoplay loop muted playsinline>
                     <source src="tara-promo.mp4" type="video/mp4">
                 </video>
             </div>
+            <div class="avatar-border"></div>
         </div>
         
-        <h1>PRAXIS</h1>
-        <div class="tagline">Study Smarter. Together.</div>
-        
-        <div class="features">
-            <div class="feature">🧠 AI-Powered Study Coach</div>
-            <div class="feature">👥 Study Groups & Community</div>
-            <div class="feature">📈 Track Your Progress</div>
+        <div class="avatar-intro">
+            <h2>Meet TARA</h2>
+            <p>Your AI Study Coach</p>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <div class="feature-content">
+                <h3>Personalized Learning</h3>
+                <p>AI-powered study plans tailored to your needs</p>
+            </div>
         </div>
         
-        <div class="cta-button">Download on TestFlight</div>
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <div class="feature-content">
+                <h3>Track Progress</h3>
+                <p>See your improvement with detailed analytics</p>
+            </div>
+        </div>
         
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <div class="social-proof">Join 1,000+ Students Studying Smarter</div>
-    </div>
+        <div class="feature">
+            <div class="feature-icon">👥</div>
+            <div class="feature-content">
+                <h3>Study Together</h3>
+                <p>Join groups and learn with classmates</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <p class="coming-soon">Coming Soon</p>
+        <a href="#waitlist" class="cta-button">Join the Waitlist</a>
+        <p class="availability">Available on TestFlight</p>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Praxis. All rights reserved.</p>
+        </div>
+    </footer>
+    
 </body>
 </html>
