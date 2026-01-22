@@ -1,123 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Praxis AI – Guided by intelligence</title>
-  <link rel="stylesheet" href="style.css" />
+    <title>Praxis - Study Smarter Together</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            width: 1080px;
+            height: 1920px; /* 9:16 ratio for Instagram/TikTok */
+            background: linear-gradient(135deg, #1a2a6c, #3b5998, #6dd5ed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: -apple-system, system-ui, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-100px) translateX(50px); }
+        }
+        
+        .hero {
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .avatar-container {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .avatar-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.3; }
+        }
+        
+        .avatar-circle {
+            width: 480px;
+            height: 480px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .avatar-ring {
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border: 6px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s infinite;
+        }
+        
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 120px;
+            font-weight: 900;
+            color: white;
+            margin: 40px 0 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            letter-spacing: -2px;
+        }
+        
+        .tagline {
+            font-size: 48px;
+            color: rgba(255,255,255,0.95);
+            font-weight: 500;
+            margin-bottom: 80px;
+        }
+        
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 25px 50px;
+            border-radius: 60px;
+            font-size: 32px;
+            color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .cta-button {
+            background: white;
+            color: #1a2a6c;
+            padding: 35px 70px;
+            border-radius: 40px;
+            font-size: 36px;
+            font-weight: 700;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
+        }
+        
+        .stars {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .social-proof {
+            color: rgba(255,255,255,0.9);
+            font-size: 28px;
+        }
+    </style>
 </head>
 <body>
-
-<!-- TOP HERO - Icon LEFT, Text RIGHT -->
-<section class="top-hero">
-  <div class="hero-container">
-    <img src="assets/logo.png" class="hero-icon" alt="Praxis AI" />
-    <div class="hero-text">
-      <h1>Praxis AI</h1>
-      <p>Guided by intelligence.</p>
+    <!-- Particles -->
+    <script>
+        for(let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.width = Math.random() * 20 + 10 + 'px';
+            particle.style.height = particle.style.width;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+    
+    <div class="hero">
+        <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <div class="avatar-ring"></div>
+            <div class="avatar-circle">
+                <video autoplay loop muted playsinline>
+                    <source src="tara-promo.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        <h1>PRAXIS</h1>
+        <div class="tagline">Study Smarter. Together.</div>
+        
+        <div class="features">
+            <div class="feature">🧠 AI-Powered Study Coach</div>
+            <div class="feature">👥 Study Groups & Community</div>
+            <div class="feature">📈 Track Your Progress</div>
+        </div>
+        
+        <div class="cta-button">Download on TestFlight</div>
+        
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="social-proof">Join 1,000+ Students Studying Smarter</div>
     </div>
-  </div>
-</section>
-
-<!-- MID SECTION - Light Background -->
-<section class="intro">
-  <h2>Praxis AI</h2>
-  <p>Guided by intelligence.</p>
-  <div class="intro-visuals">
-    <img src="assets/hero-phone.png" class="phone" alt="Praxis App" />
-    <div class="objects">
-      <img src="assets/headphones.png" alt="Headphones" />
-      <img src="assets/notebook.png" alt="Notebook" />
-    </div>
-  </div>
-</section>
-
-<!-- NAV STRIP -->
-<nav class="nav-strip">
-  <div class="nav-logo">
-    <img src="assets/logo.png" alt="Praxis AI" />
-    <span>Praxis AI</span>
-  </div>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Features</a>
-    <a href="#">About</a>
-    <button class="primary-btn" onclick="openWaitlist()">Get Started</button>
-  </div>
-</nav>
-
-<!-- LOWER HERO - Navy Blue -->
-<section class="bottom-hero">
-  <div class="bottom-content">
-    <h2>Where practice meets progress.</h2>
-    <p>Sharpen your mind and boost your study habits with Praxis AI.</p>
-    <button class="start-btn" onclick="openWaitlist()">Start Studying</button>
-  </div>
-  <div class="bottom-image">
-    <img src="assets/laptop.png" alt="Praxis on Laptop" />
-  </div>
-</section>
-
-<!-- WAITLIST MODAL -->
-<div id="waitlist-modal" class="modal">
-  <div class="modal-overlay" onclick="closeWaitlist()"></div>
-  <div class="modal-content">
-    <span class="close-btn" onclick="closeWaitlist()">&times;</span>
-    
-    <h3>Join the Waitlist</h3>
-    <p class="modal-subtitle">Be first to know when Praxis AI launches!</p>
-    
-    <!-- WAITLIST FORM (before launch) -->
-    <form id="waitlist-form" class="waitlist-form">
-      <input 
-        type="email" 
-        id="email" 
-        placeholder="Enter your email" 
-        required 
-      />
-      <button type="submit">Notify Me at Launch</button>
-    </form>
-    
-    <p class="launch-note">🚀 Launching Thursday!</p>
-    
-    <!-- DOWNLOAD BUTTONS (after launch) -->
-    <div id="download-buttons" class="download-buttons hidden">
-      <h3>Download Praxis AI</h3>
-      <div class="store-buttons">
-        <a href="#" class="store-btn ios">
-          <span class="store-icon">📱</span>
-          <div class="store-text">
-            <small>Download on the</small>
-            <strong>App Store</strong>
-          </div>
-        </a>
-        <a href="#" class="store-btn android">
-          <span class="store-icon">🤖</span>
-          <div class="store-text">
-            <small>Get it on</small>
-            <strong>Google Play</strong>
-          </div>
-        </a>
-      </div>
-    </div>
-    
-    <!-- SUCCESS MESSAGE -->
-    <div id="success-message" class="success-msg hidden">
-      <p>✅ You're on the list! We'll email you when we launch.</p>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <p>&copy; 2026 Praxis AI. Built by Nexus Tech Digital Solutions.</p>
-  <div class="footer-social">
-    <a href="https://instagram.com/praxisstudyapp">📸 Instagram</a>
-    <a href="https://linkedin.com/company/praxisstudyapp">💼 LinkedIn</a>
-  </div>
-</footer>
-
-<script type="module" src="main.js"></script>
-
 </body>
 </html>
