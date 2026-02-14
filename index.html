@@ -32,14 +32,14 @@
             letter-spacing: -0.022em;
         }
 
-        /* Hero Section - Now 60vh instead of 100vh */
+        /* Hero Section - No top padding, video starts at very top */
         .hero {
             min-height: 60vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 0 60px;
+            padding: 0 0 60px;
             position: relative;
             overflow: hidden;
             background: linear-gradient(180deg, #fafafa 0%, #f5f5f7 100%);
@@ -211,15 +211,18 @@
         }
 
         .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 80px;
-            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature {
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
             opacity: 0;
             animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -234,6 +237,37 @@
 
         .feature:nth-child(3) {
             animation-delay: 0.4s;
+        }
+
+        /* Alternate layout - even features have mockup on right */
+        .feature:nth-child(even) .feature-mockup {
+            order: 2;
+        }
+
+        .feature:nth-child(even) .feature-content {
+            order: 1;
+        }
+
+        .feature-content {
+            text-align: left;
+        }
+
+        .feature-mockup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-mockup img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .feature-mockup img:hover {
+            transform: translateY(-8px);
         }
 
         .feature-text {
@@ -454,14 +488,24 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .features {
+                gap: 80px;
+            }
+
+            .feature {
+                gap: 60px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 min-height: 70vh;
-                padding: 60px 0;
+                padding: 0 0 40px;
             }
 
             .video-container {
-                margin-bottom: 40px;
+                margin-bottom: 32px;
             }
 
             .hero-content {
@@ -487,6 +531,28 @@
 
             .features {
                 gap: 56px;
+            }
+
+            .feature {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            /* On mobile, always show mockup first */
+            .feature:nth-child(even) .feature-mockup {
+                order: 1;
+            }
+
+            .feature:nth-child(even) .feature-content {
+                order: 2;
+            }
+
+            .feature-content {
+                text-align: center;
+            }
+
+            .feature-mockup img {
+                max-width: 280px;
             }
 
             .feature-text {
@@ -546,14 +612,37 @@
     <section class="content-section">
         <h2 class="section-title">Why Praxis works</h2>
         <div class="features">
+            <!-- Feature 1 -->
             <div class="feature">
-                <p class="feature-text">Deep focus sessions that adapt to how you learn best, eliminating distractions and maximizing retention.</p>
+                <div class="feature-mockup">
+                    <!-- Will load from Cloudinary tag: praxis-feature-1 -->
+                    <img id="mockup-1" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'%3E%3Crect fill='%23f5f5f7' width='400' height='800'/%3E%3Ctext x='200' y='400' font-family='system-ui' font-size='48' fill='%23666' text-anchor='middle'%3EPraxis%3C/text%3E%3Ctext x='200' y='450' font-family='system-ui' font-size='18' fill='%23999' text-anchor='middle'%3EMockup Coming Soon%3C/text%3E%3C/svg%3E" alt="Praxis App - Study Feed" />
+                </div>
+                <div class="feature-content">
+                    <p class="feature-text">Deep focus sessions that adapt to how you learn best, eliminating distractions and maximizing retention.</p>
+                </div>
             </div>
+
+            <!-- Feature 2 -->
             <div class="feature">
-                <p class="feature-text">Intelligent guidance that understands your progress and adjusts difficulty in real-time.</p>
+                <div class="feature-mockup">
+                    <!-- Will load from Cloudinary tag: praxis-feature-2 -->
+                    <img id="mockup-2" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'%3E%3Crect fill='%23f5f5f7' width='400' height='800'/%3E%3Ctext x='200' y='400' font-family='system-ui' font-size='48' fill='%23666' text-anchor='middle'%3EPraxis%3C/text%3E%3Ctext x='200' y='450' font-family='system-ui' font-size='18' fill='%23999' text-anchor='middle'%3EMockup Coming Soon%3C/text%3E%3C/svg%3E" alt="Praxis App - Focus Mode" />
+                </div>
+                <div class="feature-content">
+                    <p class="feature-text">Intelligent guidance that understands your progress and adjusts difficulty in real-time.</p>
+                </div>
             </div>
+
+            <!-- Feature 3 -->
             <div class="feature">
-                <p class="feature-text">Built by students, for students—tested in real study sessions, refined by actual learning needs.</p>
+                <div class="feature-mockup">
+                    <!-- Will load from Cloudinary tag: praxis-feature-3 -->
+                    <img id="mockup-3" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800'%3E%3Crect fill='%23f5f5f7' width='400' height='800'/%3E%3Ctext x='200' y='400' font-family='system-ui' font-size='48' fill='%23666' text-anchor='middle'%3EPraxis%3C/text%3E%3Ctext x='200' y='450' font-family='system-ui' font-size='18' fill='%23999' text-anchor='middle'%3EMockup Coming Soon%3C/text%3E%3C/svg%3E" alt="Praxis App - Progress Tracking" />
+                </div>
+                <div class="feature-content">
+                    <p class="feature-text">Built by students, for students—tested in real study sessions, refined by actual learning needs.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -621,12 +710,18 @@
               - Upload your post-launch video
               - Tag it with: praxis-post-launch
            
-           4. The page will automatically show the correct video based on today's date!
+           4. Upload your THREE app mockup images and tag them:
+              - First mockup (deep focus) → Tag: praxis-feature-1
+              - Second mockup (intelligence) → Tag: praxis-feature-2
+              - Third mockup (built by students) → Tag: praxis-feature-3
+           
+           5. The page will automatically show the correct video and mockups!
            
            How it works:
            - Same proven system as meishavernell.com
-           - Videos hosted on Cloudinary (fast, reliable)
-           - Automatic date-based switching
+           - Videos and images hosted on Cloudinary (fast, reliable)
+           - Automatic date-based video switching
+           - Tag-based mockup loading
            - Works in Safari, Chrome, Firefox, all browsers
            ===================================================== */
         
@@ -635,6 +730,13 @@
             preLaunch: 'praxis-pre-launch',   // Before Feb 14, 2026
             launch: 'praxis-launch',          // Feb 14, 2026
             postLaunch: 'praxis-post-launch'  // Feb 15, 2026 and after
+        };
+
+        // Feature mockup tags
+        const MOCKUP_TAGS = {
+            feature1: 'praxis-feature-1',
+            feature2: 'praxis-feature-2',
+            feature3: 'praxis-feature-3'
         };
 
         // Fallback video if Cloudinary isn't set up yet
@@ -759,6 +861,49 @@
         }
 
         // ============================================
+        // LOAD MOCKUP IMAGES FROM CLOUDINARY
+        // ============================================
+        async function loadMockupFromCloudinary(tag, imgElementId) {
+            const imgElement = document.getElementById(imgElementId);
+            
+            try {
+                console.log(`Fetching mockup from Cloudinary with tag: ${tag}`);
+                
+                const response = await fetch(
+                    `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/list/${tag}.json?_=${Date.now()}`
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.resources && data.resources.length > 0) {
+                        const image = data.resources[0];
+                        const imageUrl = `https://res.cloudinary.com/${CLOUDINARY_CLOUD_NAME}/image/upload/q_auto,f_auto/${image.public_id}.${image.format}`;
+                        
+                        console.log(`✅ Mockup found for ${tag}:`, image.public_id);
+                        imgElement.src = imageUrl;
+                    } else {
+                        console.log(`⚠️ No mockup found with tag: ${tag} - using Praxis logo placeholder`);
+                    }
+                } else {
+                    throw new Error('Cloudinary API error: ' + response.status);
+                }
+            } catch (error) {
+                console.error(`❌ Error loading mockup for ${tag}:`, error.message);
+                console.log('Using Praxis logo placeholder');
+            }
+        }
+
+        // ============================================
+        // LOAD ALL MOCKUPS
+        // ============================================
+        function loadAllMockups() {
+            loadMockupFromCloudinary(MOCKUP_TAGS.feature1, 'mockup-1');
+            loadMockupFromCloudinary(MOCKUP_TAGS.feature2, 'mockup-2');
+            loadMockupFromCloudinary(MOCKUP_TAGS.feature3, 'mockup-3');
+        }
+
+        // ============================================
         // MUTE/UNMUTE FUNCTIONALITY
         // ============================================
         const muteBtn = document.getElementById('muteBtn');
@@ -785,6 +930,7 @@
         // ============================================
         window.addEventListener('load', () => {
             loadVideoFromCloudinary();
+            loadAllMockups();
         });
 
         // Fallback: Play video on any user interaction (for Safari autoplay policy)
