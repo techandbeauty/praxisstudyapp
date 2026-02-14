@@ -449,7 +449,12 @@
         <div class="video-container">
             <div class="video-circle">
                 <video id="hero-video" autoplay loop muted playsinline webkit-playsinline x-webkit-airplay="allow">
-                    <!-- Video source will be determined by JavaScript based on date -->
+                    <!-- JavaScript will select the appropriate video based on date:
+                         Before Feb 14, 2026: videos/heygen-video.mp4
+                         Feb 14, 2026: videos/launch-video.mp4
+                         After Feb 15, 2026: videos/post-launch-video.mp4 -->
+                    <source id="video-source" src="videos/heygen-video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </div>
         </div>
@@ -515,72 +520,122 @@
         // Date-based video switching
         function loadAppropriateVideo() {
             const video = document.getElementById('hero-video');
+            const videoSource = document.getElementById('video-source');
             const today = new Date();
             const launchDate = new Date('2026-02-14');
             const postLaunchDate = new Date('2026-02-15');
             
-            let videoSource = '';
+            let videoPath = '';
+            let videoLabel = '';
             
-            // Before launch (before Feb 14, 2026)
+            // Determine which video to show based on date
             if (today < launchDate) {
-                videoSource = 'videos/heygen-video.mp4'; // Your HeyGen AI video
-            }
-            // Launch day (Feb 14, 2026)
-            else if (today >= launchDate && today < postLaunchDate) {
-                videoSource = 'videos/launch-video.mp4'; // Your launch video
-            }
-            // Post-launch (after Feb 15, 2026)
-            else {
-                videoSource = 'videos/post-launch-video.mp4'; // Your post-launch video
+                // BEFORE LAUNCH (until Feb 13, 2026)
+                videoPath = 'videos/heygen-video.mp4';
+                videoLabel = 'Pre-launch HeyGen AI video';
+            } else if (today >= launchDate && today < postLaunchDate) {
+                // LAUNCH DAY (Feb 14, 2026)
+                videoPath = 'videos/launch-video.mp4';
+                videoLabel = 'Launch day video';
+            } else {
+                // POST-LAUNCH (Feb 15, 2026 and after)
+                videoPath = 'videos/post-launch-video.mp4';
+                videoLabel = 'Post-launch video';
             }
             
-            // Debug: Log which video should be playing
-            console.log('Current date:', today);
-            console.log('Loading video:', videoSource);
+            // Debug logging
+            console.log('=== PRAXIS VIDEO DEBUG ===');
+            console.log('Current date:', today.toLocaleDateString());
+            console.log('Video to load:', videoLabel);
+            console.log('Video path:', videoPath);
+            console.log('========================');
             
-            // Set the video source
-            video.src = videoSource;
+            // Update the video source
+            videoSource.src = videoPath;
             video.load();
             
-            // Force play for Safari - Safari sometimes needs explicit play() call
-            video.addEventListener('loadedmetadata', function() {
-                console.log('Video metadata loaded');
+            // Try to play the video
+            const playVideo = () => {
                 const playPromise = video.play();
                 
                 if (playPromise !== undefined) {
                     playPromise
                         .then(() => {
-                            console.log('Video playing successfully!');
+                            console.log('✅ Video is playing!');
                         })
                         .catch(error => {
-                            console.error('Autoplay prevented:', error);
-                            console.log('Try interacting with the page to start video');
+                            console.warn('⚠️ Autoplay blocked by browser:', error.message);
+                            console.log('💡 This is normal - video will play on first user interaction');
                         });
                 }
-            });
+            };
             
-            // Add error handler to help debug
+            // Play when video is ready
+            video.addEventListener('loadeddata', function onLoadedData() {
+                console.log('✅ Video loaded successfully');
+                playVideo();
+                video.removeEventListener('loadeddata', onLoadedData);
+            }, { once: true });
+            
+            // Error handling with visual feedback
             video.addEventListener('error', function(e) {
-                console.error('Video failed to load:', videoSource);
-                console.error('Error details:', e);
-                console.error('Make sure the video file exists at:', videoSource);
-                console.error('Ensure you are accessing the site via HTTPS (not file://)');
-            });
-            
-            // Log when video starts playing
-            video.addEventListener('loadeddata', function() {
-                console.log('Video data loaded successfully!');
-            });
+                console.error('❌ VIDEO FAILED TO LOAD');
+                console.error('Path:', videoPath);
+                console.error('Error:', video.error);
+                
+                // Show error message in the circle
+                const circle = document.querySelector('.video-circle');
+                circle.innerHTML = `
+                    <div style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        height: 100%;
+                        padding: 40px;
+                        text-align: center;
+                        color: #86868b;
+                    ">
+                        <div style="font-size: 48px; margin-bottom: 20px;">⚠️</div>
+                        <div style="font-size: 17px; margin-bottom: 10px;">Video not found</div>
+                        <div style="font-size: 14px; line-height: 1.5;">
+                            Looking for:<br>
+                            <code style="background: #f5f5f7; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-top: 8px;">${videoPath}</code>
+                        </div>
+                        <div style="font-size: 13px; margin-top: 20px; opacity: 0.7;">
+                            Check the browser console (F12) for details
+                        </div>
+                    </div>
+                `;
+                
+                // Detailed error info in console
+                console.log('');
+                console.log('🔍 TROUBLESHOOTING STEPS:');
+                console.log('1. Check that you have a "videos" folder next to your HTML file');
+                console.log('2. Verify the video file exists: ' + videoPath);
+                console.log('3. Make sure the filename is exactly: heygen-video.mp4');
+                console.log('4. Ensure you are using a local server (not file://)');
+                console.log('5. For Safari: site must be HTTPS');
+                console.log('');
+            }, { once: true });
         }
         
-        // Load video on page load
-        window.addEventListener('load', loadAppropriateVideo);
+        // Load video when page is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadAppropriateVideo);
+        } else {
+            loadAppropriateVideo();
+        }
         
-        // Fallback: Try to play video on any user interaction
+        // Fallback: Play video on any user interaction (for Safari)
+        let hasInteracted = false;
         document.addEventListener('click', function() {
-            const video = document.getElementById('hero-video');
-            if (video.paused) {
-                video.play().catch(e => console.log('Play failed:', e));
+            if (!hasInteracted) {
+                hasInteracted = true;
+                const video = document.getElementById('hero-video');
+                if (video && video.paused) {
+                    video.play().catch(e => console.log('Play on click failed:', e.message));
+                }
             }
         }, { once: true });
 
