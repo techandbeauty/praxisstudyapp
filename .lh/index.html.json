@@ -3,11 +3,59 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1771041644426,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1771072368968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n <html lang=\"en\">\n <head>\n     <meta charset=\"UTF-8\">\n     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n-    <title>Praxis - Your personal study session, guided by intelligence</title>\n+    <title>Praxis - Your personal study session, guided by intelligene </title>\n     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n     <link href=\"https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n     <style>\n@@ -557,9 +557,9 @@\n     <!-- Footer -->\n     <footer>\n         <div class=\"footer-content\">\n             <div class=\"footer-title\">Praxis</div>\n-            <div class=\"footer-text\">Launching soon</div>\n+            <div class=\"footer-text\">Launing soon</div>\n         </div>\n     </footer>\n \n     <!-- Modal -->\n"
+                },
+                {
+                    "date": 1771072374313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -557,9 +557,9 @@\n     <!-- Footer -->\n     <footer>\n         <div class=\"footer-content\">\n             <div class=\"footer-title\">Praxis</div>\n-            <div class=\"footer-text\">Launing soon</div>\n+            <div class=\"footer-text\">Ava</div>\n         </div>\n     </footer>\n \n     <!-- Modal -->\n"
+                },
+                {
+                    "date": 1771072403317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -557,9 +557,9 @@\n     <!-- Footer -->\n     <footer>\n         <div class=\"footer-content\">\n             <div class=\"footer-title\">Praxis</div>\n-            <div class=\"footer-text\">Ava</div>\n+            <div class=\"footer-text\">Availble for iOS Testers.</div>\n         </div>\n     </footer>\n \n     <!-- Modal -->\n"
+                },
+                {
+                    "date": 1771072412190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -556,10 +556,10 @@\n \n     <!-- Footer -->\n     <footer>\n         <div class=\"footer-content\">\n-            <div class=\"footer-title\">Praxis</div>\n-            <div class=\"footer-text\">Availble for iOS Testers.</div>\n+            <div class=\"footer-title\">Praxis Study App </div>\n+            <div class=\"footer-text\">Now Availble for iOS Testers.</div>\n         </div>\n     </footer>\n \n     <!-- Modal -->\n"
+                },
+                {
+                    "date": 1771072427010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -556,9 +556,9 @@\n \n     <!-- Footer -->\n     <footer>\n         <div class=\"footer-content\">\n-            <div class=\"footer-title\">Praxis Study App </div>\n+            <div class=\"footer-title\">Praxis Study App | 2026 </div>\n             <div class=\"footer-text\">Now Availble for iOS Testers.</div>\n         </div>\n     </footer>\n \n"
+                },
+                {
+                    "date": 1771072446809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -566,9 +566,9 @@\n     <div id=\"signup-modal\" class=\"modal\">\n         <div class=\"modal-content\">\n             <button class=\"close-modal\" onclick=\"closeModal()\">&times;</button>\n             <div class=\"modal-header\">\n-                <h3 class=\"modal-title\">Join the beta</h3>\n+                <h3 class=\"modal-title\">Start a Study Session</h3>\n                 <p class=\"modal-subtitle\">Be among the first to experience Praxis</p>\n             </div>\n             <form id=\"signup-form\" action=\"https://formspree.io/f/xojnezyw\" method=\"POST\">\n                 <div class=\"form-group\">\n"
+                },
+                {
+                    "date": 1771072457512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -567,9 +567,9 @@\n         <div class=\"modal-content\">\n             <button class=\"close-modal\" onclick=\"closeModal()\">&times;</button>\n             <div class=\"modal-header\">\n                 <h3 class=\"modal-title\">Start a Study Session</h3>\n-                <p class=\"modal-subtitle\">Be among the first to experience Praxis</p>\n+                <p class=\"modal-subtitle\">Be among the first to experience Praxis and see all of the </p>\n             </div>\n             <form id=\"signup-form\" action=\"https://formspree.io/f/xojnezyw\" method=\"POST\">\n                 <div class=\"form-group\">\n                     <label for=\"name\">Name</label>\n"
+                },
+                {
+                    "date": 1771072481530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -567,9 +567,9 @@\n         <div class=\"modal-content\">\n             <button class=\"close-modal\" onclick=\"closeModal()\">&times;</button>\n             <div class=\"modal-header\">\n                 <h3 class=\"modal-title\">Start a Study Session</h3>\n-                <p class=\"modal-subtitle\">Be among the first to experience Praxis and see all of the </p>\n+                <p class=\"modal-subtitle\">Be among the first to experience Praxis and see all of the study features.</p>\n             </div>\n             <form id=\"signup-form\" action=\"https://formspree.io/f/xojnezyw\" method=\"POST\">\n                 <div class=\"form-group\">\n                     <label for=\"name\">Name</label>\n"
+                },
+                {
+                    "date": 1771072498552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,9 +582,9 @@\n                 <button type=\"submit\" class=\"submit-button\">Request Access</button>\n             </form>\n             <div class=\"success-message\">\n                 <div class=\"success-icon\">✓</div>\n-                <p class=\"success-text\">Thank you! We'll be in touch soon.</p>\n+                <p class=\"success-text\">Thank you! You will recieve an email soon fr.</p>\n                 <button class=\"cta-button\" onclick=\"closeModal()\">Close</button>\n             </div>\n         </div>\n     </div>\n"
+                },
+                {
+                    "date": 1771072536677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,9 +582,8 @@\n                 <button type=\"submit\" class=\"submit-button\">Request Access</button>\n             </form>\n             <div class=\"success-message\">\n                 <div class=\"success-icon\">✓</div>\n-                <p class=\"success-text\">Thank you! You will recieve an email soon fr.</p>\n                 <button class=\"cta-button\" onclick=\"closeModal()\">Close</button>\n             </div>\n         </div>\n     </div>\n"
+                },
+                {
+                    "date": 1771072549288,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,8 +582,9 @@\n                 <button type=\"submit\" class=\"submit-button\">Request Access</button>\n             </form>\n             <div class=\"success-message\">\n                 <div class=\"success-icon\">✓</div>\n+                <p class=\"success-text\">Thank you! You will recieve an email soon for downoad.</p>\n                 <button class=\"cta-button\" onclick=\"closeModal()\">Close</button>\n             </div>\n         </div>\n     </div>\n"
+                },
+                {
+                    "date": 1771072556710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -582,9 +582,9 @@\n                 <button type=\"submit\" class=\"submit-button\">Request Access</button>\n             </form>\n             <div class=\"success-message\">\n                 <div class=\"success-icon\">✓</div>\n-                <p class=\"success-text\">Thank you! You will recieve an email soon for downoad.</p>\n+                <p class=\"success-text\">Thank you! You will recieve an email soon for dowoad.</p>\n                 <button class=\"cta-button\" onclick=\"closeModal()\">Close</button>\n             </div>\n         </div>\n     </div>\n"
                 }
             ],
             "date": 1771041644426,
