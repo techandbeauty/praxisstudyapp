@@ -1,0 +1,30 @@
+{
+    "sourceFile": "CNAME",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1771030900601,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1771030907511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-www.praxissstudyapp.com\n\\ No newline at end of file\n+www.praxssstudyapp.com\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1771030918614,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-www.praxssstudyapp.com\n\\ No newline at end of file\n+www.praxissstudyapp.com\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1771030928111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-www.praxissstudyapp.com\n\\ No newline at end of file\n+https://www.praxissstudyapp.com\n"
+                }
+            ],
+            "date": 1771030900601,
+            "name": "Commit-0",
+            "content": "www.praxissstudyapp.com"
+        }
+    ]
+}
