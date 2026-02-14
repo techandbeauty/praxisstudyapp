@@ -448,7 +448,7 @@
     <section class="hero">
         <div class="video-container">
             <div class="video-circle">
-                <video id="hero-video" autoplay loop muted playsinline>
+                <video id="hero-video" autoplay loop muted playsinline webkit-playsinline x-webkit-airplay="allow">
                     <!-- Video source will be determined by JavaScript based on date -->
                 </video>
             </div>
@@ -534,13 +534,55 @@
                 videoSource = 'videos/post-launch-video.mp4'; // Your post-launch video
             }
             
+            // Debug: Log which video should be playing
+            console.log('Current date:', today);
+            console.log('Loading video:', videoSource);
+            
             // Set the video source
-            video.innerHTML = `<source src="${videoSource}" type="video/mp4">`;
+            video.src = videoSource;
             video.load();
+            
+            // Force play for Safari - Safari sometimes needs explicit play() call
+            video.addEventListener('loadedmetadata', function() {
+                console.log('Video metadata loaded');
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise
+                        .then(() => {
+                            console.log('Video playing successfully!');
+                        })
+                        .catch(error => {
+                            console.error('Autoplay prevented:', error);
+                            console.log('Try interacting with the page to start video');
+                        });
+                }
+            });
+            
+            // Add error handler to help debug
+            video.addEventListener('error', function(e) {
+                console.error('Video failed to load:', videoSource);
+                console.error('Error details:', e);
+                console.error('Make sure the video file exists at:', videoSource);
+                console.error('Ensure you are accessing the site via HTTPS (not file://)');
+            });
+            
+            // Log when video starts playing
+            video.addEventListener('loadeddata', function() {
+                console.log('Video data loaded successfully!');
+            });
         }
         
         // Load video on page load
-        loadAppropriateVideo();
+        window.addEventListener('load', loadAppropriateVideo);
+        
+        // Fallback: Try to play video on any user interaction
+        document.addEventListener('click', function() {
+            const video = document.getElementById('hero-video');
+            if (video.paused) {
+                video.play().catch(e => console.log('Play failed:', e));
+            }
+        }, { once: true });
 
         // Modal functionality
         const modal = document.getElementById('signup-modal');
